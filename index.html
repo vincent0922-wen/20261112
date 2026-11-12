@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>獵人猜拳遊戲</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <h2 id="status-text">請點擊遊戲開始</h2>
+
+  <div id="game-container">
+    <div class="img-box" id="display-box">
+      <!-- 場景 1 歡迎畫面與開始按鈕 -->
+      <div id="welcome-scene" class="welcome-overlay">
+        <img class="main-scene" src="img/Game-Start.jpg" alt="歡迎背景圖">
+        <button type="button" id="start-btn" class="game-start-btn">遊戲開始</button>
+      </div>
+
+      <!-- 主畫面背景圖 -->
+      <img id="game-img" class="main-scene" src="img/Battle-image.jpg" alt="遊戲畫面">
+
+      <!-- 雙方出拳展示區 -->
+      <div id="battle-hands" class="battle-hands-container hidden">
+        <div id="computer-hand-box" class="hand-box">
+          <img id="computer-hand-img" src="" alt="對方出拳">
+        </div>
+        <div id="player-hand-box" class="hand-box">
+          <img id="player-hand-img" src="" alt="我方出拳">
+        </div>
+      </div>
+
+      <!-- 再一局按鈕 -->
+      <button type="button" id="overlay-restart-btn" class="overlay-restart hidden">再一局！</button>
+    </div>
+
+    <!-- 底部控制面板 -->
+    <div class="bottom-panel hidden" id="main-bottom-panel">
+      <div id="phase-select-grid" class="rpc-grid-container">
+        <button type="button" class="grid-btn" data-choice="scissors">
+          <img src="img/scissors.png" alt="剪刀">
+        </button>
+        <button type="button" class="grid-btn" data-choice="stone">
+          <img src="img/stone.png" alt="石頭">
+        </button>
+        <button type="button" class="grid-btn" data-choice="paper">
+          <img src="img/paper.png" alt="布">
+        </button>
+      </div>
+      <button type="button" id="big-attack-btn" class="big-start-btn hidden">
+        出拳！
+      </button>
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>

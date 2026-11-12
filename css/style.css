@@ -1,0 +1,254 @@
+body {
+  background-color: #1a1a1a; /* 深色頁面背景 */
+  color: #fff; /* 預設文字白色 */
+  font-family: Arial, sans-serif; /* 預設字體 */
+  display: flex; /* 啟用彈性排版 */
+  flex-direction: column; /* 垂直排列標題與遊戲框 */
+  align-items: center; /* 水平置中 */
+  justify-content: center; /* 垂直置中 */
+  height: 100vh; /* 佔滿視窗高度 */
+  margin: 0; /* 清除預設外距 */
+  overflow: hidden; /* 隱藏超出視窗的捲軸 */
+  margin-top: -50px; /* 視覺微調向上位移 */
+}
+
+#status-text {
+  color: #fff; /* 狀態文字白色 */
+  margin-bottom: 15px; /* 與下方遊戲框的間距 */
+  font-size: 32px; /* 狀態文字大小 */
+  font-weight: bold; /* 粗體顯示 */
+}
+
+#game-container {
+  text-align: center; /* 文字置中 */
+  width: 800px; /* 遊戲主畫面寬度 */
+  height: 450px; /* 遊戲主畫面高度 */
+  background-color: #000; /* 遊戲框底色 */
+  border: 4px solid #333; /* 外框深灰邊線 */
+  overflow: hidden; /* 裁切超出框線的內容 */
+  position: relative; /* 作為內部絕對定位元素的基準 */
+  display: flex; /* 啟用彈性排版 */
+  flex-direction: column; /* 垂直排列 */
+}
+
+/* 大圖區域容器 */
+.img-box {
+  width: 100%; /* 寬度佔滿容器 */
+  height: 100%; /* 高度佔滿容器 */
+  flex-grow: 1; /* 自動填滿剩餘空間 */
+  display: flex; /* 啟用彈性排版 */
+  justify-content: center; /* 圖片水平置中 */
+  align-items: center; /* 圖片垂直置中 */
+  overflow: hidden; /* 隱藏溢出部分 */
+  position: relative; /* 相對定位 */
+  background-color: #000; /* 黑色背景 */
+}
+
+.img-box img.main-scene {
+  width: 100%; /* 圖片寬度適應容器 */
+  height: 100%; /* 圖片高度適應容器 */
+  object-fit: contain; /* 完整顯示圖片不裁切 */
+}
+
+/* 場景 1 歡迎覆蓋層 */
+.welcome-overlay {
+  position: absolute; /* 絕對定位蓋在最上層 */
+  top: 0; /* 貼齊頂部 */
+  left: 0; /* 貼齊左側 */
+  width: 100%; /* 寬度全滿 */
+  height: 100%; /* 高度全滿 */
+  background-color: #000; /* 黑色背景 */
+  display: flex; /* 啟用彈性排版 */
+  justify-content: center; /* 內容水平置中 */
+  align-items: center; /* 內容垂直置中 */
+  z-index: 20; /* 最高圖層順序 */
+}
+
+/* 遊戲開始按鈕 */
+.game-start-btn {
+  position: absolute; /* 絕對定位於歡迎畫面上 */
+  bottom: 65px; /* 距離底部 65px */
+  background-color: #ffffff; /* 白色底色 */
+  color: #000000; /* 黑色文字 */
+  border: 3px solid #282828; /* 深灰外框 */
+  padding: 12px 50px; /* 按鈕內距 */
+  font-size: 24px; /* 文字大小 */
+  font-weight: bold; /* 粗體字 */
+  border-radius: 35px; /* 膠囊圓角 */
+  cursor: pointer; /* 滑鼠移上變手指 */
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5); /* 按鈕陰影 */
+  transition: all 0.2s; /* 平滑過渡動畫 */
+}
+
+.game-start-btn:hover {
+  background-color: #000000; /* 懸停變黑底 */
+  color: #ffffff; /* 懸停變白字 */
+  font-size: 28px; /* 懸停放大字體 */
+  transform: scale(1.05); /* 懸停微幅放大 */
+}
+
+/* 雙方出拳展示容器 */
+.battle-hands-container {
+  position: absolute; /* 絕對定位覆蓋畫面 */
+  top: 0; /* 貼齊頂部 */
+  left: 0; /* 貼齊左側 */
+  width: 100%; /* 寬度全滿 */
+  height: 100%; /* 高度全滿 */
+  pointer-events: none; /* 穿透點擊不阻擋操作 */
+  z-index: 5; /* 圖層順序 */
+}
+
+/* 出拳圖示外框 */
+.hand-box {
+  position: absolute; /* 絕對定位 */
+  width: 130px; /* 方框寬度 */
+  height: 130px; /* 方框高度 */
+  background-color: #ffffff; /* 白色背景 */
+  border: 4px solid #000000; /* 黑色粗邊框 */
+  border-radius: 8px; /* 圓角 */
+  display: flex; /* 啟用彈性排版 */
+  justify-content: center; /* 水平置中 */
+  align-items: center; /* 垂直置中 */
+  left: 50%; /* 水平置中基準 */
+  transform: translateX(-50%); /* 修正自身寬度達成精準置中 */
+  z-index: 6; /* 圖層順序 */
+}
+
+/* 電腦出拳框（上方並上下翻轉） */
+#computer-hand-box {
+  top: 50px; /* 距離頂部 50px */
+  transform: translateX(-50%) scaleY(-1); /* 置中並垂直鏡像翻轉 */
+}
+
+/* 玩家出拳框（下方） */
+#player-hand-box {
+  bottom: 65px; /* 距離底部 65px */
+}
+
+.hand-box img {
+  max-width: 85%; /* 圖片最大寬度 */
+  max-height: 85%; /* 圖片最大高度 */
+  object-fit: contain; /* 保持比例不變形 */
+}
+
+/* 再一局按鈕 */
+.overlay-restart {
+  position: absolute; /* 絕對定位於畫面中央 */
+  top: 50%; /* 垂直置中基準 */
+  left: 50%; /* 水平置中基準 */
+  transform: translate(-50%, -50%); /* 精準置中 */
+  background-color: #ffffff; /* 白色背景 */
+  color: #000000; /* 黑色文字 */
+  border: 3px solid #000; /* 黑色邊框 */
+  padding: 12px 30px; /* 按鈕內距 */
+  font-size: 28px; /* 文字大小 */
+  font-weight: bold; /* 粗體 */
+  cursor: pointer; /* 手指游標 */
+  border-radius: 6px; /* 圓角 */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* 陰影 */
+  transition: all 0.2s; /* 過渡效果 */
+  z-index: 10; /* 圖層順序 */
+}
+
+.overlay-restart:hover {
+  background-color: red; /* 懸停變紅底 */
+  color: white; /* 懸停變白字 */
+  font-size: 36px; /* 懸停放大字體 */
+}
+
+/* 底部控制面板 */
+.bottom-panel {
+  position: absolute; /* 固定於遊戲框底部 */
+  bottom: 0; /* 貼齊底部 */
+  left: 0; /* 貼齊左側 */
+  width: 100%; /* 寬度全滿 */
+  height: 110px; /* 面板高度 */
+  background-color: rgba(255, 255, 255, 0.95); /* 半透明白底 */
+  border-top: 3px solid #333; /* 頂部分隔線 */
+  display: flex; /* 啟用彈性排版 */
+  z-index: 12; /* 圖層順序 */
+}
+
+.rpc-grid-container {
+  width: 100%; /* 寬度全滿 */
+  height: 100%; /* 高度全滿 */
+  display: flex; /* 水平並排三個選項 */
+}
+
+.grid-btn {
+  flex: 1; /* 三等分寬度 */
+  height: 100%; /* 高度全滿 */
+  background-color: transparent; /* 透明背景 */
+  border: none; /* 清除預設邊框 */
+  border-right: 2px solid #000000; /* 右側分隔黑線 */
+  cursor: pointer; /* 手指游標 */
+  display: flex; /* 啟用彈性排版 */
+  justify-content: center; /* 圖示水平置中 */
+  align-items: center; /* 圖示垂直置中 */
+  transition: background-color 0.2s; /* 背景色漸變 */
+}
+
+.grid-btn:last-child {
+  border-right: none; /* 最後一個按鈕移除右邊線 */
+}
+
+.grid-btn:hover {
+  background-color: rgba(250, 236, 38, 0.4); /* 懸停顯示淡黃色高亮 */
+}
+
+.grid-btn img {
+  max-width: 100%; /* 圖片最大寬度 */
+  max-height: 100%; /* 圖片最大高度 */
+  object-fit: contain; /* 保持圖片比例 */
+}
+
+/* 滿版出拳按鈕 */
+.big-start-btn {
+  width: 100%; /* 寬度全滿 */
+  height: 100%; /* 高度全滿 */
+  background-color: #ffffff; /* 白色背景 */
+  color: #000000; /* 黑色文字 */
+  border: none; /* 清除預設邊框 */
+  font-size: 38px; /* 大字體 */
+  font-weight: bold; /* 粗體 */
+  letter-spacing: 2px; /* 字距加寬 */
+  cursor: pointer; /* 手指游標 */
+  display: flex; /* 啟用彈性排版 */
+  justify-content: center; /* 水平置中 */
+  align-items: center; /* 垂直置中 */
+  transition: all 0.2s ease; /* 平滑過渡 */
+  box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.05); /* 內陰影 */
+}
+
+.big-start-btn:hover {
+  background-color: #fa0000; /* 懸停變紅底 */
+  color: white; /* 懸停變白字 */
+  font-size: 50px; /* 懸停放大字體 */
+}
+
+.big-start-btn:active {
+  background-color: #e0e0e0; /* 點擊瞬間變灰 */
+}
+
+/* 畫面震動關鍵影格動畫 */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(0px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(2px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(2px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake-effect {
+  animation: shake 0.4s infinite; /* 套用震動動畫 */
+}
+
+.hidden {
+  display: none !important; /* 強制隱藏元素 */
+}
