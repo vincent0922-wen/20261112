@@ -1,0 +1,263 @@
+
+/* 頁面整體設定 */
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    margin-top: -50px;
+}
+
+/* 遊戲狀態文字 */
+#status-text {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* 遊戲主畫面容器 */
+#game-container {
+    text-align: center;
+    width: 800px;
+    height: 450px;
+    background-color: #000;
+    border: 4px solid #333;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 遊戲圖片區域 */
+.img-box {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+}
+
+.img-box img.main-scene {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 歡迎畫面覆蓋層 */
+.welcome-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+/* 遊戲開始按鈕 */
+.game-start-btn {
+    position: absolute;
+    bottom: 65px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 3px solid #282828;
+    padding: 12px 50px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 35px;
+    cursor: pointer;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s;
+}
+
+.game-start-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 28px;
+    transform: scale(1.05);
+}
+
+/* 雙方出拳展示區域 */
+.battle-hands-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* 出拳圖示外框 */
+.hand-box {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+}
+
+/* 電腦出拳位置 */
+#computer-hand-box {
+    top: 50px;
+    transform: translateX(-50%) scaleY(-1);
+}
+
+/* 玩家出拳位置 */
+#player-hand-box {
+    bottom: 65px;
+}
+
+/* 出拳圖片設定 */
+.hand-box img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+}
+
+/* 再一局按鈕 */
+.overlay-restart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    color: #000000;
+    border: 3px solid #000;
+    padding: 12px 30px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.overlay-restart:hover {
+    background-color: red;
+    color: white;
+    font-size: 36px;
+}
+
+/* 底部控制面板 */
+.bottom-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-top: 3px solid #333;
+    display: flex;
+    z-index: 12;
+}
+
+/* 剪刀石頭布選項容器 */
+.rpc-grid-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* 剪刀石頭布選項按鈕 */
+.grid-btn {
+    flex: 1;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-right: 2px solid #000000;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.grid-btn:last-child {
+    border-right: none;
+}
+
+.grid-btn:hover {
+    background-color: rgba(250, 236, 38, 0.4);
+}
+
+.grid-btn img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 滿版出拳按鈕 */
+.big-start-btn {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    font-size: 38px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.big-start-btn:hover {
+    background-color: #fa0000;
+    color: white;
+    font-size: 50px;
+}
+
+.big-start-btn:active {
+    background-color: #e0e0e0;
+}
+
+/* 畫面震動動畫 */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* 套用震動效果 */
+.shake-effect {
+    animation: shake 0.4s infinite;
+}
+
+/* 隱藏元素設定 */
+.hidden {
+    display: none !important;
+}

@@ -36,19 +36,19 @@ let carouselTimer = null;   // 輪播計時器
 let battleTimer = null;     // 對決過場計時器
 
 // 抓取 DOM 元素
-const welcomeScene = document.getElementById('welcome-scene');
-const startBtn = document.getElementById('start-btn');
-const gameImg = document.getElementById('game-img');
-const displayBox = document.getElementById('display-box');
-const statusText = document.getElementById('status-text');
-const mainBottomPanel = document.getElementById('main-bottom-panel');
-const phaseSelectGrid = document.getElementById('phase-select-grid');
-const choiceBtns = document.querySelectorAll('.grid-btn');
-const bigAttackBtn = document.getElementById('big-attack-btn');
-const battleHands = document.getElementById('battle-hands');
-const playerHandImg = document.getElementById('player-hand-img');
-const computerHandImg = document.getElementById('computer-hand-img');
-const overlayRestartBtn = document.getElementById('overlay-restart-btn');
+const welcomeScene = document.getElementById('welcome-scene'); // 抓取遊戲歡迎畫面
+const startBtn = document.getElementById('start-btn'); // 抓取遊戲開始按鈕
+const gameImg = document.getElementById('game-img'); // 抓取遊戲主要圖片
+const displayBox = document.getElementById('display-box'); // 抓取圖片顯示容器
+const statusText = document.getElementById('status-text'); // 抓取遊戲狀態文字
+const mainBottomPanel = document.getElementById('main-bottom-panel'); // 抓取底部控制面板
+const phaseSelectGrid = document.getElementById('phase-select-grid'); // 抓取剪刀石頭布選擇區域
+const choiceBtns = document.querySelectorAll('.grid-btn'); // 抓取所有剪刀石頭布選項按鈕
+const bigAttackBtn = document.getElementById('big-attack-btn'); // 抓取出拳按鈕
+const battleHands = document.getElementById('battle-hands'); // 抓取雙方出拳展示區域
+const playerHandImg = document.getElementById('player-hand-img'); // 抓取玩家出拳圖片
+const computerHandImg = document.getElementById('computer-hand-img'); // 抓取電腦出拳圖片
+const overlayRestartBtn = document.getElementById('overlay-restart-btn'); // 抓取再一局按鈕
 
 // 點擊遊戲開始按鈕，切換到場景 2（VS 過場）
 function goToVSStage() {
@@ -76,7 +76,6 @@ function playerChoose(pick) {
   playerPick = pick;
   statusText.innerText = `你選擇了 ${getChoiceName(pick)}，請點擊出拳！`;
   gameImg.src = images.stage3;
-
   phaseSelectGrid.classList.add('hidden');    // 隱藏三選一網格
   bigAttackBtn.classList.remove('hidden');    // 亮出滿版出拳按鈕
 }
@@ -114,7 +113,6 @@ function startBattle() {
   // 停留 2 秒對峙後，進入結果畫面
   battleTimer = setTimeout(() => {
     battleHands.classList.add('hidden');
-
     if (result === 'win') {
       statusText.innerText = `你贏了！：你出 [${getChoiceName(playerPick)}] 贏了對方的 [${getChoiceName(computerPick)}]！`;
       playlist = images.winList;
@@ -168,11 +166,9 @@ function resetGame() {
   computerPick = '';
   playlist = [];
   currentIndex = 0;
-
   overlayRestartBtn.classList.add('hidden');  // 隱藏再一局按鈕
   battleHands.classList.add('hidden');        // 隱藏雙方出拳框
   displayBox.classList.remove('shake-effect'); // 移除震動特效
-
   goToBattleStage(); // 回到選拳畫面
 }
 
@@ -184,7 +180,7 @@ function getChoiceName(pick) {
   return '';
 }
 
-// --- 事件監聽器統一綁定（HTML 與 JS 分離） ---
+// 事件監聽器統一綁定（HTML 與 JS 分離）
 startBtn.addEventListener('click', goToVSStage);        // 綁定「遊戲開始」按鈕
 bigAttackBtn.addEventListener('click', startBattle);    // 綁定「出拳！」按鈕
 overlayRestartBtn.addEventListener('click', resetGame); // 綁定「再一局！」按鈕
