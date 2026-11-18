@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西索主題計算機</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- 計算機外框 -->
+    <div class="calculator-wrapper">
+        <!-- 頂部小螢幕 -->
+        <div class="calculator-screen" id="screen">0</div>
+
+        <!-- 按鍵容器 -->
+        <div class="typing-area container">
+            <!-- 左側數字與功能區（3欄 × 5列） -->
+            <div class="numbers">
+                <div class="row">
+                    <button type="button" class="btn operator-btn btn-icon" data-val="⌫"><img src="./img/Delete.png" alt="⌫"></button>
+                    <button type="button" class="btn operator-btn" data-val="C">C</button>
+                    <button type="button" class="btn operator-btn" data-val="%">%</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn number-btn" data-val="7">7</button>
+                    <button type="button" class="btn number-btn btn-eight" data-val="8">8</button>
+                    <button type="button" class="btn number-btn" data-val="9">9</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn number-btn btn-icon" data-val="4"><img src="./img/hisoka_face.png" alt="4"></button>
+                    <button type="button" class="btn number-btn" data-val="5">5</button>
+                    <button type="button" class="btn number-btn" data-val="6">6</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn number-btn" data-val="1">1</button>
+                    <button type="button" class="btn number-btn" data-val="2">2</button>
+                    <button type="button" class="btn number-btn" data-val="3">3</button>
+                </div>
+                <div class="last-line">
+                    <button type="button" class="btn number-btn btn-icon" data-val="FACE"><img src="./img/Face.jpg" alt="面容"></button>
+                    <button type="button" class="btn number-btn" data-val="0">0</button>
+                    <button type="button" class="btn number-btn" data-val=".">.</button>
+                </div>
+            </div>
+
+            <!-- 右側運算子與等於區（1欄 × 5列） -->
+            <div class="right-panel">
+                <div class="operators">
+                    <button type="button" class="btn operator-btn" data-val="÷">÷</button>
+                    <button type="button" class="btn operator-btn" data-val="×">×</button>
+                    <button type="button" class="btn operator-btn" data-val="−">−</button>
+                    <button type="button" class="btn operator-btn" data-val="+">+</button>
+                </div>
+                <div class="functions">
+                    <button type="button" class="btn operator-btn" data-val="=">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
